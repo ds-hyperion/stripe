@@ -2,8 +2,6 @@
 
 namespace Hyperion\Stripe;
 
-use Hyperion\Stripe\Service\StripeService;
-
 class Plugin
 {
     public const SECRET_STRIPE_ENDPOINT_OPTION = 'hyperion_secret_stripe_endpoint_option';
