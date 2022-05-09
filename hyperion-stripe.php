@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Stripe webhook
+ * Plugin Name: Hyperion - Module Stripe
  * Plugin URI:
  * Description: Mise en place des webhook stripe
  * Version: 0.1
