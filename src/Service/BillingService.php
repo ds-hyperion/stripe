@@ -5,13 +5,13 @@ namespace Hyperion\Stripe\Service;
 use Stripe\Invoice;
 use Stripe\PaymentIntent;
 
-class BillingService
+class BillingService extends StripeService
 {
     public static function createLineItem(string $customerId,
                                            string $priceId,
                                            int $quantity) : void
     {
-        $client = StripeService::getStripeClient();
+        $client = self::getStripeClient();
 
         $client->invoiceItems->create(
             [
@@ -24,7 +24,7 @@ class BillingService
 
     public static function createBill(string $customerId) : Invoice
     {
-        $client = StripeService::getStripeClient();
+        $client = self::getStripeClient();
 
         $invoice = $client->invoices->create(
             [
@@ -37,7 +37,7 @@ class BillingService
 
     public static function finalizeAndGetPaymentIntent(Invoice $invoice) : PaymentIntent
     {
-        $client = StripeService::getStripeClient();
+        $client = self::getStripeClient();
         $invoice = $client->invoices->finalizeInvoice($invoice->id);
 
         return $client->paymentIntents->retrieve($invoice->payment_intent);

@@ -2,7 +2,7 @@
 
 namespace Hyperion\Stripe\Service;
 
-class CustomerService
+class CustomerService extends StripeService
 {
     private static array $customers = [];
 
@@ -13,7 +13,7 @@ class CustomerService
             return self::$customers[$emailMd5];
         }
 
-        $client = StripeService::getStripeClient();
+        $client = self::getStripeClient();
         $customerCollection = $client->customers->all(['email' => strtolower($email)]);
         if (count($customerCollection) > 0) {
             self::$customers[$emailMd5] = current($customerCollection)->data->id;
@@ -30,7 +30,7 @@ class CustomerService
                                           string $lastName,
                                           array $metadata = []) : string
     {
-        $client = StripeService::getStripeClient();
+        $client = self::getStripeClient();
         $customer = $client->customers->create(
             [
                 'email' => strtolower($email),

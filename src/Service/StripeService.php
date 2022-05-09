@@ -6,11 +6,11 @@ use Exception;
 use Hyperion\Stripe\Plugin;
 use Stripe\StripeClient;
 
-class StripeService
+abstract class StripeService
 {
     private static StripeClient $stripeClient;
 
-    public static function getStripeClient(): StripeClient
+    protected static function getStripeClient(): StripeClient
     {
         if(!isset(self::$stripeClient)) {
             $apiKey = get_option(Plugin::STRIPE_APIKEY);
