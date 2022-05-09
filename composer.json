@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Hyperion\\Stripe": "src/"
+            "Hyperion\\Stripe\\": "src/"
         }
     },
     "authors": [
