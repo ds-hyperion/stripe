@@ -16,7 +16,7 @@ class Plugin
             'Configuration du plugin stripe',
             'Stripe',
             'manage_options',
-            'Admin/Config.php'
+            __DIR__.'/Admin/Config.php'
         );
     }
 

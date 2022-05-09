@@ -6,7 +6,7 @@
 ?>
 
 <div class="wrap">
-    <form action="">
+    <form method="post">
         <label for="stripe_endpoint_secret">Stripe endpoint secret : </label>
         <input type="text" id="stripe_endpoint_secret">
         <input type="submit" value="Sauvegarder">
