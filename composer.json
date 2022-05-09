@@ -1,12 +1,12 @@
 {
     "name": "hyperion/stripe",
-    "type": "plugin",
+    "type": "wordpress-plugin",
     "require": {
         "stripe/stripe-php": "^7.128"
     },
     "autoload": {
         "psr-4": {
-            "Hyperion\\Stripe": "src/"
+            "Hyperion\\Stripe\\": "src/"
         }
     },
     "authors": [

@@ -40,7 +40,8 @@ class StripeWebhook extends APIEnpointAbstract
                     break;
             }
 
-            return new WP_REST_Response(null, 204);
+            return APIManagement::APIOk();
+
         } catch (\Exception $exception) {
             return APIManagement::APIError("Erreur dans le décodage de l'objet json", 400);
         }
