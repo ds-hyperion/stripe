@@ -8,6 +8,10 @@ class Plugin
 
     public static function init()
     {
+    }
+
+    public static function addAdminPage()
+    {
         add_menu_page(
             'Configuration du plugin stripe',
             'Stripe',
