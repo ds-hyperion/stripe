@@ -4,9 +4,10 @@ namespace Hyperion\Stripe\Service;
 
 use Exception;
 use Hyperion\Stripe\Plugin;
+use Stripe\PaymentIntent;
 use Stripe\StripeClient;
 
-abstract class StripeService
+class StripeService
 {
     private static StripeClient $stripeClient;
 
@@ -21,6 +22,12 @@ abstract class StripeService
         }
 
         return self::$stripeClient;
+    }
+
+    public static function addMetadataToPaymentIntent(PaymentIntent $paymentIntent, array $metadata)
+    {
+        $client = self::getStripeClient();
+        $client->paymentIntents->update($paymentIntent->id, ['metadata' => $metadata]);
     }
 
 
