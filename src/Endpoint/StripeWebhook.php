@@ -26,7 +26,6 @@ class StripeWebhook extends APIEnpointAbstract
                 $sig_header,
                 $endpoint_secret
             );
-
         } catch (\UnexpectedValueException|SignatureVerificationException $e) {
             return APIManagement::APIError('Erreur dans la vérification de la signature stripe.', 400);
         }
@@ -36,7 +35,10 @@ class StripeWebhook extends APIEnpointAbstract
 
             switch ($event->type) {
                 case StripeEventEnum::PAYMENT_SUCCESS->value :
-                    do_action(WordpressEventEnum::PAYMENT_SUCCESS->value,$eventPayload);
+                    do_action(StripeEventEnum::PAYMENT_SUCCESS->value,$eventPayload);
+                    break;
+                case StripeEventEnum::SETUPINTENT_SUCCESS->value :
+                    do_action(StripeEventEnum::SETUPINTENT_SUCCESS->value, $eventPayload);
                     break;
             }
 
