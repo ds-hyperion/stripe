@@ -4,6 +4,7 @@ namespace Hyperion\Stripe\Service;
 
 use Stripe\Invoice;
 use Stripe\PaymentIntent;
+use Stripe\Price;
 
 class BillingService extends StripeService
 {
@@ -18,6 +19,19 @@ class BillingService extends StripeService
                 'customer' => $customerId,
                 'price' => $priceId,
                 'quantity' => $quantity
+            ]
+        );
+    }
+
+    public static function createCustomPrice(float $amount,
+                                             string $stripeProductId,
+                                             string $currency = 'eur') : Price
+    {
+        return self::getStripeClient()->prices->create(
+            [
+                'unit_amount' => $amount * 100,
+                'currency' => $currency,
+                'product' => $stripeProductId
             ]
         );
     }
