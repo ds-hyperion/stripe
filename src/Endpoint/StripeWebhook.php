@@ -6,7 +6,6 @@ use Hyperion\RestAPI\APIEnpointAbstract;
 use Hyperion\RestAPI\APIManagement;
 use Hyperion\RestAPI\Plugin;
 use Hyperion\Stripe\Enum\StripeEventEnum;
-use Hyperion\Stripe\Enum\WordpressEventEnum;
 use Stripe\Exception\SignatureVerificationException;
 use Stripe\Webhook;
 use WP_REST_Request;
