@@ -16,7 +16,7 @@ class StripeWebhook extends APIEnpointAbstract
 {
     public static function callback(WP_REST_Request $request): WP_REST_Response
     {
-        $endpoint_secret = getenv('STRIPE_ENDPOINT_SECRET');
+        $endpoint_secret = get_option(\Hyperion\Stripe\Plugin::SECRET_STRIPE_ENDPOINT_OPTION);
 
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
         $payload = $request->get_body();
