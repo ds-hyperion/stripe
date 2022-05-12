@@ -10,8 +10,7 @@
  * Licence: GPLv2
  */
 
-add_action('init', '\Hyperion\Stripe\Plugin::init');
-add_action('admin_menu', '\Hyperion\Stripe\Plugin::addAdminPage');
+add_action('admin_menu', '\Hyperion\Stripe\Admin\Settings::createMenu');
 
 register_activation_hook(__FILE__, '\Hyperion\Stripe\Plugin::install');
 register_uninstall_hook(__FILE__, '\Hyperion\Stripe\Plugin::uninstall');
