@@ -21,7 +21,7 @@ class Settings
 
     public static function registerPluginSettings()
     {
-        register_setting(self::SETTINGS_GROUP, 'hyperion_stripe_endpoint_secret');
-        register_setting(self::SETTINGS_GROUP, 'hyperion_stripe_api_key');
+        register_setting(self::SETTINGS_GROUP, \Hyperion\Stripe\Plugin::SECRET_STRIPE_ENDPOINT_OPTION);
+        register_setting(self::SETTINGS_GROUP, \Hyperion\Stripe\Plugin::STRIPE_APIKEY);
     }
 }

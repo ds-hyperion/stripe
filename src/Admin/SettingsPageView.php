@@ -7,11 +7,11 @@
         <table class="form-table">
             <tr>
                 <th scope="row">API Key</th>
-                <td><input type="text" name="hyperion_stripe_api_key" value="<?php echo esc_attr( get_option('hyperion_stripe_api_key') ); ?>" /></td>
+                <td><input type="text" name="<?php echo \Hyperion\Stripe\Plugin::STRIPE_APIKEY; ?>" value="<?php echo esc_attr( get_option(\Hyperion\Stripe\Plugin::STRIPE_APIKEY) ); ?>" /></td>
             </tr>
             <tr>
                 <th scope="row">Endpoint Secret</th>
-                <td><input type="text" name="hyperion_stripe_endpoint_secret" value="<?php echo esc_attr( get_option('hyperion_stripe_endpoint_secret') ); ?>" /></td>
+                <td><input type="text" name="<?php echo \Hyperion\Stripe\Plugin::SECRET_STRIPE_ENDPOINT_OPTION; ?>" value="<?php echo esc_attr( get_option(\Hyperion\Stripe\Plugin::SECRET_STRIPE_ENDPOINT_OPTION) ); ?>" /></td>
             </tr>
         </table>
 
