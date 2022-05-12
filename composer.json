@@ -1,14 +1,23 @@
 {
     "name": "hyperion/stripe",
     "type": "wordpress-plugin",
+    "minimum-stability": "dev",
     "require": {
-        "stripe/stripe-php": "^7.128"
+        "stripe/stripe-php": "^7.128",
+        "hyperion/restapi": "dev-dev"
     },
     "autoload": {
         "psr-4": {
             "Hyperion\\Stripe\\": "src/"
         }
     },
+    "repositories": [
+        {
+            "type" : "vcs",
+            "url": "git@github.com:ds-hyperion/restapi.git",
+            "no-api": true
+        }
+    ],
     "authors": [
         {
             "name": "Grégory COLLIN",

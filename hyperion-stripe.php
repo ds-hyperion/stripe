@@ -11,6 +11,7 @@
  */
 
 add_action('admin_menu', '\Hyperion\Stripe\Admin\Settings::createMenu');
+do_action(\Hyperion\RestAPI\Plugin::ADD_API_ENDPOINT_ACTION, new \Hyperion\Stripe\Endpoint\StripeWebhook());
 
 register_activation_hook(__FILE__, '\Hyperion\Stripe\Plugin::install');
 register_uninstall_hook(__FILE__, '\Hyperion\Stripe\Plugin::uninstall');

@@ -4,6 +4,7 @@ namespace Hyperion\Stripe\Endpoint;
 
 use Hyperion\RestAPI\APIEnpointAbstract;
 use Hyperion\RestAPI\APIManagement;
+use Hyperion\RestAPI\Plugin;
 use Hyperion\Stripe\Enum\StripeEventEnum;
 use Hyperion\Stripe\Enum\WordpressEventEnum;
 use Stripe\Exception\SignatureVerificationException;
@@ -61,7 +62,7 @@ class StripeWebhook extends APIEnpointAbstract
 
     public static function getAPINamespace(): string
     {
-        return 'coralguardian/stripe';
+        return get_option(Plugin::API_NAMESPACE_OPTION);
     }
 
     public static function getPermissions(): string

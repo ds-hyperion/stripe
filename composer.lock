@@ -4,8 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efd7166ed3cacc331f7d289d83b8e6fd",
+    "content-hash": "92fdc0146511594736f6a504fad1fb64",
     "packages": [
+        {
+            "name": "hyperion/restapi",
+            "version": "dev-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:ds-hyperion/restapi.git",
+                "reference": "3216d72dc994193231c0a99b816465fd6ae15214"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ds-hyperion/restapi/zipball/3216d72dc994193231c0a99b816465fd6ae15214",
+                "reference": "3216d72dc994193231c0a99b816465fd6ae15214",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Hyperion\\RestAPI\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Grégory COLLIN",
+                    "email": "gregory@d4rk0s.net"
+                }
+            ],
+            "description": "Plugin permettant d'abstraire la complexité  au niveau de la gestion de l'API rest de wordpress.",
+            "time": "2022-05-12T16:25:20+00:00"
+        },
         {
             "name": "stripe/stripe-php",
             "version": "v7.128.0",
@@ -69,8 +99,10 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "hyperion/restapi": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
