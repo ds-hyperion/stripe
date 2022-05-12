@@ -32,14 +32,12 @@ class StripeWebhook extends APIEnpointAbstract
         }
 
         try {
-            $eventPayload = json_decode( $event->data->object, true, 512, JSON_THROW_ON_ERROR );
-
             switch ($event->type) {
                 case StripeEventEnum::PAYMENT_SUCCESS->value :
-                    do_action(StripeEventEnum::PAYMENT_SUCCESS->value,$eventPayload);
+                    do_action(StripeEventEnum::PAYMENT_SUCCESS->value,$event->data->object);
                     break;
                 case StripeEventEnum::SETUPINTENT_SUCCESS->value :
-                    do_action(StripeEventEnum::SETUPINTENT_SUCCESS->value, $eventPayload);
+                    do_action(StripeEventEnum::SETUPINTENT_SUCCESS->value, $event->data->object);
                     break;
             }
 
