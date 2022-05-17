@@ -2,21 +2,23 @@
 
 namespace Hyperion\Stripe\Service;
 
+use Stripe\Customer;
+
 class CustomerService extends StripeService
 {
     private static array $customers = [];
 
-    public static function getCustomerIdByEmail(string $email) : ?string
+    private static function getCustomerIdByEmail(string $email) : ?Customer
     {
         $emailMd5 = md5($email);
-        if(isset(self::$customers[$emailMd5])) {
+        if (isset(self::$customers[$emailMd5])) {
             return self::$customers[$emailMd5];
         }
 
         $client = self::getStripeClient();
         $customerCollection = $client->customers->all(['email' => strtolower($email)]);
         if (count($customerCollection) > 0) {
-            self::$customers[$emailMd5] = current($customerCollection)->data->id;
+            self::$customers[$emailMd5] = current($customerCollection)->data;
 
             return self::$customers[$emailMd5];
         }
@@ -25,12 +27,19 @@ class CustomerService extends StripeService
     }
 
 
-    public static function createCustomer(string $email,
-                                          string $firstName,
-                                          string $lastName,
-                                          array $metadata = []) : string
-    {
+    public static function getOrCreateCustomer(
+        string $email,
+        string $firstName,
+        string $lastName,
+        array $metadata = []
+    ) : Customer {
         $client = self::getStripeClient();
+
+        $customer = self::getCustomerIdByEmail($email);
+        if ($customer !== null) {
+            return $customer;
+        }
+
         $customer = $client->customers->create(
             [
                 'email' => strtolower($email),
@@ -39,9 +48,8 @@ class CustomerService extends StripeService
             ]
         );
 
-        self::$customers[md5($email)] = $customer->id;
+        self::$customers[md5($email)] = $customer;
 
-        return $customer->id;
+        return $customer;
     }
-
 }
