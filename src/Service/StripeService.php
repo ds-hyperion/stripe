@@ -24,6 +24,18 @@ class StripeService
         return self::$stripeClient;
     }
 
+    public static function createPaymentIntent(float $amount, array $metadata = []) : PaymentIntent
+    {
+        $client = self::getStripeClient();
+
+        return $client->paymentIntents->create([
+            'amount' => $amount * 100,
+            'currency' => 'eur',
+            'payment_method_types' => ['card'],
+            'metadata' => $metadata
+        ]);
+    }
+
     public static function addMetadataToPaymentIntent(PaymentIntent $paymentIntent, array $metadata)
     {
         $client = self::getStripeClient();

@@ -7,16 +7,16 @@ use Stripe\Customer;
 
 class SubscriptionService extends StripeService
 {
-
-    public static function createSubscription(string $customerEmail,
-                                              string $firstname,
-                                              string $lastname,
-                                              string $paymentMethodId,
-                                              float $amount)
-    {
+    public static function createSubscription(
+        string $customerEmail,
+        string $firstname,
+        string $lastname,
+        string $paymentMethodId,
+        float $amount
+    ) {
         /** @var Customer $customer */
         $customer = CustomerService::getCustomerIdByEmail($customerEmail);
-        if($customer === null) {
+        if ($customer === null) {
             $customer = CustomerService::createCustomer(
                 email: $customerEmail,
                 firstName: $firstname,
@@ -47,8 +47,7 @@ class SubscriptionService extends StripeService
                 'customer' => $customer->id,
                 'items' => [
                     'price' => $price->id
-                ],
-                'expand' => ['latest_invoice.payment_intent']
+                ]
             ]
         );
     }
