@@ -12,7 +12,7 @@ class SubscriptionService extends StripeService
         float $amount
     ) : Subscription {
         $price = self::getStripeClient()->prices->create([
-            'unit_amount' => $amount * 100,
+            'unit_amount' => $amount,
             'currency' => 'eur',
             'recurring' => ['interval' => 'month'],
             'product' => DonationRecurrencyEnum::MONTHLY->getStripeProductId()
@@ -21,9 +21,9 @@ class SubscriptionService extends StripeService
         return self::getStripeClient()->subscriptions->create(
             [
                 'customer' => $customerId,
-                'items' => [
+                'items' => [[
                     'price' => $price->id
-                ]
+                ]]
             ]
         );
     }
