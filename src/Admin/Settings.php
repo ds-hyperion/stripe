@@ -11,7 +11,7 @@ class Settings
         //create new top-level menu
         add_menu_page('Configuration du plugin STRIPE',
             'Stripe',
-            'administrator',
+            'manage_options',
             __DIR__."/SettingsPageView.php"
         );
 
