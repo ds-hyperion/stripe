@@ -17,8 +17,8 @@ class CustomerService extends StripeService
 
         $client = self::getStripeClient();
         $customerCollection = $client->customers->all(['email' => strtolower($email)]);
-        if (count($customerCollection) > 0) {
-            self::$customers[$emailMd5] = current($customerCollection)->data;
+        if (count($customerCollection->data) > 0) {
+            self::$customers[$emailMd5] = current($customerCollection->data)->id;
 
             return self::$customers[$emailMd5];
         }
