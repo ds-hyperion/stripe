@@ -42,7 +42,7 @@ class StripeService
 
         if ($isForFutureUsage) {
             $params['setup_future_usage'] = 'off_session';
-            $params['automatic_payment_methods'] = [ 'enabled' => 'true'];
+            //$params['automatic_payment_methods'] = [ 'enabled' => 'true'];
         }
 
         return $client->paymentIntents->create($params);
