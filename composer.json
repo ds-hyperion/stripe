@@ -1,6 +1,6 @@
 {
     "name": "hyperion/stripe",
-    "type": "wordpress-muplugin",
+    "type": "wordpress-plugin",
     "minimum-stability": "dev",
     "require": {
         "stripe/stripe-php": "^7.128",
