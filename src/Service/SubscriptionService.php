@@ -9,13 +9,16 @@ class SubscriptionService extends StripeService
 {
     public static function createSubscription(
         string $customerId,
-        float $amount
+        float $amount,
+        string $defaultPaymentMethod,
+        string $productId
     ) : Subscription {
+
         $price = self::getStripeClient()->prices->create([
             'unit_amount' => $amount,
             'currency' => 'eur',
             'recurring' => ['interval' => 'month'],
-            'product' => DonationRecurrencyEnum::MONTHLY->getStripeProductId()
+            'product' => $productId
         ]);
 
         return self::getStripeClient()->subscriptions->create(
@@ -23,7 +26,8 @@ class SubscriptionService extends StripeService
                 'customer' => $customerId,
                 'items' => [[
                     'price' => $price->id
-                ]]
+                ]],
+                'default_payment_method' => $defaultPaymentMethod
             ]
         );
     }
