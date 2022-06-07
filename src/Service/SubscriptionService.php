@@ -9,7 +9,8 @@ class SubscriptionService extends StripeService
 {
     public static function createSubscription(
         string $customerId,
-        float $amount
+        float $amount,
+        string $defaultPaymentMethod
     ) : Subscription {
         $price = self::getStripeClient()->prices->create([
             'unit_amount' => $amount,
@@ -23,7 +24,8 @@ class SubscriptionService extends StripeService
                 'customer' => $customerId,
                 'items' => [[
                     'price' => $price->id
-                ]]
+                ]],
+                'default_payment_method' => $defaultPaymentMethod
             ]
         );
     }
