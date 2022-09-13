@@ -16,4 +16,9 @@ class SearchService extends StripeService
     {
         return self::getStripeClient()->prices->search(['query' => $searchModel->getMetadataQueryString()]);
     }
+
+    public static function getPrice(string $priceId)
+    {
+        return self::getStripeClient()->prices->retrieve($priceId);
+    }
 }

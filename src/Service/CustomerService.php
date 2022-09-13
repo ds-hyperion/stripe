@@ -68,7 +68,7 @@ class CustomerService extends StripeService
         $customer = $client->customers->create(
             [
                 'email' => strtolower($email),
-                'name' => trim(ucfirst($mainContactName))." - $companyName",
+                'name' => ucfirst(trim($mainContactName)) ." - $companyName",
                 'metadata' => array_merge(['type' => 'company'], $metadata)
             ]
         );

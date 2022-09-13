@@ -91,8 +91,8 @@ class PriceSearchModel
         }
 
         if($this->getMetadata() !== null && count($this->getMetadata()) > 0) {
-            foreach($this->getMetadata() as $metadataKey => $metadataValue) {
-                $metadataQueryPart[] = "metadata[\"$metadataKey\"] : \"$metadataValue\"";
+            foreach($this->getMetadata() as $metadata) {
+                $metadataQueryPart[] = "metadata[\"".key($metadata)."\"] : \"".current($metadata)."\"";
             }
         }
 
