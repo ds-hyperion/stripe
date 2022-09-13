@@ -3,7 +3,7 @@
     "type": "wordpress-plugin",
     "minimum-stability": "dev",
     "require": {
-        "stripe/stripe-php": "^7.128",
+        "stripe/stripe-php": "^9.5",
         "hyperion/restapi": "dev-dev"
     },
     "autoload": {
