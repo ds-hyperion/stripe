@@ -18,7 +18,10 @@ class StripeService
             if ($apiKey === false) {
                 throw new Exception("STRIPE APIKEY not set");
             }
-            self::$stripeClient = new StripeClient($apiKey);
+            self::$stripeClient = new StripeClient([
+                'api_key' => $apiKey,
+                'stripe_version' => "2022-08-01"
+            ]);
         }
 
         return self::$stripeClient;
