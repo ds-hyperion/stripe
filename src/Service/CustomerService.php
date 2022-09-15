@@ -51,6 +51,11 @@ class CustomerService extends StripeService
         return $customer;
     }
 
+    public static function updateCustomerMetadata(Customer $customer, array $metadata) : Customer
+    {
+        return self::getStripeClient()->customers->update($customer->id, ['metadata' => $metadata]);
+    }
+
 
     public static function getOrCreateCompanyCustomer(
         string $email,
