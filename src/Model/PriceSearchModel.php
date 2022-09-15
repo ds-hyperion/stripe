@@ -75,8 +75,8 @@ class PriceSearchModel implements Stringable
         }
 
         if($this->getMetadata() !== null && count($this->getMetadata()) > 0) {
-            foreach($this->getMetadata() as $metadata) {
-                $metadataQueryPart[] = "metadata[\"".key($metadata)."\"] : \"".current($metadata)."\"";
+            foreach($this->getMetadata() as $key => $value) {
+                $metadataQueryPart[] = "metadata[\"$key\"] : \"$value\"";
             }
         }
 
