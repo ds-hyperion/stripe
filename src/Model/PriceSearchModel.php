@@ -2,24 +2,38 @@
 
 namespace Hyperion\Stripe\Model;
 
-class PriceSearchModel
+use JetBrains\PhpStorm\Pure;
+use Stringable;
+
+class PriceSearchModel implements Stringable
 {
-    private ?bool $active = null;
-    private ?string $currency = null;
-    private ?string $lookupKey = null;
-    private ?array $metadata = null;
-    private ?string $product = null;
-    private ?string $type = null;
+    private ?bool $active;
+    private ?string $currency;
+    private ?string $lookupKey;
+    private ?array $metadata;
+    private ?string $product;
+    private ?string $type;
+
+    public function __construct(
+        ?bool $active = null,
+        ?string $currency = null,
+        ?string $lookupKey = null,
+        ?array $metadata = null,
+        ?string $product = null,
+        ?string $type = null
+    )
+    {
+        $this->active = $active;
+        $this->currency = $currency;
+        $this->lookupKey = $lookupKey;
+        $this->metadata = $metadata;
+        $this->product = $product;
+        $this->type = $type;
+    }
 
     public function getActive(): ?bool
     {
         return $this->active;
-    }
-
-    public function setActive(bool $active): PriceSearchModel
-    {
-        $this->active = $active;
-        return $this;
     }
 
     public function getCurrency(): ?string
@@ -27,21 +41,9 @@ class PriceSearchModel
         return $this->currency;
     }
 
-    public function setCurrency(string $currency): PriceSearchModel
-    {
-        $this->currency = $currency;
-        return $this;
-    }
-
     public function getLookupKey(): ?string
     {
         return $this->lookupKey;
-    }
-
-    public function setLookupKey(string $lookupKey): PriceSearchModel
-    {
-        $this->lookupKey = $lookupKey;
-        return $this;
     }
 
     public function getMetadata(): ?array
@@ -49,21 +51,9 @@ class PriceSearchModel
         return $this->metadata;
     }
 
-    public function addMetadata(array $metadata): PriceSearchModel
-    {
-        $this->metadata[] = $metadata;
-        return $this;
-    }
-
     public function getProduct(): ?string
     {
         return $this->product;
-    }
-
-    public function setProduct(string $product): PriceSearchModel
-    {
-        $this->product = $product;
-        return $this;
     }
 
     public function getType(): ?string
@@ -71,13 +61,7 @@ class PriceSearchModel
         return $this->type;
     }
 
-    public function setType(string $type): PriceSearchModel
-    {
-        $this->type = $type;
-        return $this;
-    }
-
-    public function getMetadataQueryString(): string
+    #[Pure] public function __toString(): string
     {
         $metadataQueryPart = [];
 

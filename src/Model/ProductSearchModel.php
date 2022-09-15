@@ -2,24 +2,37 @@
 
 namespace Hyperion\Stripe\Model;
 
-class ProductSearchModel
+use JetBrains\PhpStorm\Pure;
+use Stringable;
+
+class ProductSearchModel implements Stringable
 {
-    private ?bool $active = null;
-    private ?string $description = null;
-    private ?array $metadata = null;
-    private ?string $name = null;
-    private ?bool $shippable = null;
-    private ?string $url = null;
+    private ?bool $active;
+    private ?string $description;
+    private ?array $metadata;
+    private ?string $name;
+    private ?bool $shippable;
+    private ?string $url;
+
+    public function __construct(
+        ?bool $active = null,
+        ?string $description = null,
+        ?array $metadata = null,
+        ?string $name = null,
+        ?bool $shippable = null,
+        ?string $url = null
+    ) {
+        $this->active = $active;
+        $this->description = $description;
+        $this->metadata = $metadata;
+        $this->name = $name;
+        $this->shippable = $shippable;
+        $this->url = $url;
+    }
 
     public function getActive(): ?bool
     {
         return $this->active;
-    }
-
-    public function setActive(?bool $active): ProductSearchModel
-    {
-        $this->active = $active;
-        return $this;
     }
 
     public function getDescription(): ?string
@@ -27,21 +40,9 @@ class ProductSearchModel
         return $this->description;
     }
 
-    public function setDescription(?string $description): ProductSearchModel
-    {
-        $this->description = $description;
-        return $this;
-    }
-
     public function getMetadata(): ?array
     {
         return $this->metadata;
-    }
-
-    public function addMetadata(array $metadata): ProductSearchModel
-    {
-        $this->metadata[] = $metadata;
-        return $this;
     }
 
     public function getName(): ?string
@@ -49,21 +50,9 @@ class ProductSearchModel
         return $this->name;
     }
 
-    public function setName(?string $name): ProductSearchModel
-    {
-        $this->name = $name;
-        return $this;
-    }
-
     public function getShippable(): ?bool
     {
         return $this->shippable;
-    }
-
-    public function setShippable(?bool $shippable): ProductSearchModel
-    {
-        $this->shippable = $shippable;
-        return $this;
     }
 
     public function getUrl(): ?string
@@ -71,13 +60,7 @@ class ProductSearchModel
         return $this->url;
     }
 
-    public function setUrl(?string $url): ProductSearchModel
-    {
-        $this->url = $url;
-        return $this;
-    }
-
-    public function getMetadataQueryString(): string
+    public function __toString(): string
     {
         $metadataQueryPart = [];
 
