@@ -38,6 +38,9 @@ class StripeWebhook extends APIEnpointAbstract
                 case StripeEventEnum::SETUPINTENT_SUCCESS->value :
                     do_action(StripeEventEnum::SETUPINTENT_SUCCESS->value, $event->data->object);
                     break;
+                case StripeEventEnum::SUBSCRIPTION_UPDATE->value :
+                    do_action(StripeEventEnum::SUBSCRIPTION_UPDATE, $event->data->object);
+                    break;
             }
 
             return APIManagement::APIOk();
