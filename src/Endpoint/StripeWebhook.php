@@ -30,24 +30,9 @@ class StripeWebhook extends APIEnpointAbstract
             return APIManagement::APIError('Erreur dans la vérification de la signature stripe.', 400);
         }
 
-        try {
-            switch ($event->type) {
-                case StripeEventEnum::PAYMENT_SUCCESS->value :
-                    do_action(StripeEventEnum::PAYMENT_SUCCESS->value,$event->data->object);
-                    break;
-                case StripeEventEnum::SETUPINTENT_SUCCESS->value :
-                    do_action(StripeEventEnum::SETUPINTENT_SUCCESS->value, $event->data->object);
-                    break;
-                case StripeEventEnum::SUBSCRIPTION_UPDATE->value :
-                    do_action(StripeEventEnum::SUBSCRIPTION_UPDATE, $event->data->object);
-                    break;
-            }
+        do_action($event->type, $event->data->object);
 
-            return APIManagement::APIOk();
-
-        } catch (\Exception $exception) {
-            return APIManagement::APIError("Erreur dans le décodage de l'objet json : ".$exception->getMessage(), 400);
-        }
+        return APIManagement::APIOk();
     }
 
     public static function getEndpoint(): string
