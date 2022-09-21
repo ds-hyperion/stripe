@@ -43,7 +43,7 @@ class StripeWebhook extends APIEnpointAbstract
             return APIManagement::APIOk();
 
         } catch (\Exception $exception) {
-            return APIManagement::APIError("Erreur dans le décodage de l'objet json", 400);
+            return APIManagement::APIError("Erreur dans le décodage de l'objet json : ".$exception->getMessage(), 400);
         }
     }
 
