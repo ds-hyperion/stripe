@@ -4,7 +4,7 @@
     "minimum-stability": "dev",
     "require": {
         "stripe/stripe-php": "^9.5",
-        "hyperion/restapi": "dev-dev"
+        "wordpress-hyperion/restapi": "dev-dev"
     },
     "autoload": {
         "psr-4": {
