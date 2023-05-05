@@ -54,4 +54,12 @@ class StripeWebhook extends APIEnpointAbstract
     {
         return  '__return_true';
     }
+
+    // On désactive l'authentification car :
+    // 1- on a déjà un check avec une signature qui provient de stripe
+    // 2- il sera impossible à stripe de fournir le token tel qu'on le considère.
+    public static function authentificationRequired(): bool
+    {
+        return false;
+    }
 }
